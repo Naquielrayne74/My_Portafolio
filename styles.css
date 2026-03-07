@@ -270,7 +270,7 @@ body {
 
 .about-visual {
   position: relative;
-  height: 380px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,22 +278,27 @@ body {
 
 .shape {
   position: absolute;
-  border-radius: 26px;
+  border-radius: 24px;
 }
 
 .shape-dark {
-  width: 260px;
-  height: 320px;
-  background: linear-gradient(180deg, #071c2b, #315f67);
+  width: 230px;
+  height: 290px;
+  background: #062031;
   transform: rotate(-14deg);
+  top: 10px;
+  left: 120px;
+  z-index: 1;
 }
 
 .shape-light {
-  width: 360px;
-  height: 340px;
-  background: var(--accent);
-  border-radius: 32px;
-  transform: rotate(0deg);
+  width: 250px;
+  height: 260px;
+  background: #6ec3d6;
+  border-radius: 28px;
+  top: 30px;
+  left: 160px;
+  z-index: 2;
 }
 
 /* SKILLS */
@@ -414,18 +419,22 @@ body {
   }
 
   .about-visual {
-    height: 280px;
-  }
+  height: 240px;
+}
 
-  .shape-dark {
-    width: 180px;
-    height: 240px;
-  }
+.shape-dark {
+  width: 160px;
+  height: 210px;
+  top: 10px;
+  left: 70px;
+}
 
-  .shape-light {
-    width: 230px;
-    height: 220px;
-  }
+.shape-light {
+  width: 180px;
+  height: 190px;
+  top: 25px;
+  left: 95px;
+}
 }
 
 .active-area {
