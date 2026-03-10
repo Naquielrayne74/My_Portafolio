@@ -270,7 +270,7 @@ body {
 
 .about-visual {
   position: relative;
-  height: 320px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,7 +278,7 @@ body {
 
 .shape {
   position: absolute;
-  border-radius: 24px;
+  border-radius: 26px;
 }
 
 .shape-dark {
@@ -286,7 +286,7 @@ body {
   height: 290px;
   background: #062031;
   transform: rotate(-14deg);
-  top: 10px;
+  top: 12px;
   left: 120px;
   z-index: 1;
 }
@@ -296,9 +296,20 @@ body {
   height: 260px;
   background: #6ec3d6;
   border-radius: 28px;
-  top: 30px;
-  left: 160px;
+  top: 35px;
+  left: 155px;
   z-index: 2;
+}
+
+.about-img {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
 }
 
 /* SKILLS */
@@ -417,24 +428,27 @@ body {
     width: 100%;
     text-align: center;
   }
-
   .about-visual {
-  height: 240px;
-}
+    height: 240px;
+  }
 
-.shape-dark {
-  width: 160px;
-  height: 210px;
-  top: 10px;
-  left: 70px;
-}
+  .shape-dark {
+    width: 160px;
+    height: 210px;
+    top: 10px;
+    left: 70px;
+  }
 
-.shape-light {
-  width: 180px;
-  height: 190px;
-  top: 25px;
-  left: 95px;
-}
+  .shape-light {
+    width: 180px;
+    height: 190px;
+    top: 25px;
+    left: 95px;
+  }
+
+  .about-img {
+    max-width: 190px;
+  }
 }
 
 .active-area {
@@ -448,3 +462,20 @@ body {
   border-bottom: 2px solid var(--primary);
   padding-bottom: 4px;
 }
+
+/* SOFT SKILLS */
+
+.soft-skills {
+  background: #2c4c4e;
+  padding: 45px 32px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.soft-skills h2 {
+  color: #e8f3f5;
+  font-size: 2.9rem;
+  margin-bottom: 28px;
+  font-weight: 800;
+}
+
