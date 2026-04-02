@@ -1,5 +1,6 @@
 
 // animaciones de botones de jr.robotica etc//
+//PROBANDO HABER SI FUNCIONA//
 
 const elementos = document.querySelectorAll(".typing");
 
