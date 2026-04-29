@@ -1,67 +1,50 @@
 
 // animaciones de botones de jr.robotica etc//
 //PROBANDO HABER SI FUNCIONA//
-
 const elementos = document.querySelectorAll(".typing");
 
-elementos.forEach((elemento, index) => {
+elementos.forEach((el, index) => {
 
-  const texto = elemento.getAttribute("data-text");
+  const textos = [
+    el.getAttribute("data-es"),
+    el.getAttribute("data-en")
+  ];
+
+  let textoIndex = 0;
   let i = 0;
   let escribiendo = true;
 
-  function animar(){
+  function loop() {
 
-    if(escribiendo){
+    const texto = textos[textoIndex];
 
-      elemento.textContent = texto.substring(0, i + 1);
+    if (!texto) return;
+
+    if (escribiendo) {
+
+      el.textContent = texto.substring(0, i + 1);
       i++;
 
-      if(i === texto.length){
+      if (i === texto.length) {
         escribiendo = false;
-        setTimeout(animar, 2000); // pausa cuando termina
+        setTimeout(loop, 2000); // ⬅️ pausa más larga al terminar
         return;
       }
 
     } else {
 
-      elemento.textContent = texto.substring(0, i - 1);
+      el.textContent = texto.substring(0, i - 1);
       i--;
 
-      if(i === 0){
+      if (i === 0) {
         escribiendo = true;
+        textoIndex = (textoIndex + 1) % textos.length;
       }
-
     }
 
-    // velocidades
-    setTimeout(animar, escribiendo ? 200 : 120);
-
+    // 🐌 VELOCIDAD MÁS LENTA AQUÍ
+    setTimeout(loop, escribiendo ? 180 : 100);
   }
 
-  setTimeout(animar, index * 1200);
-
+  setTimeout(loop, index * 1200);
 });
-
-
-//animaciones de habilidades //
-
-const skills = document.querySelectorAll(".skill-tag");
-
-function mostrarSkills(){
-
-  const trigger = window.innerHeight * 0.85;
-
-  skills.forEach(skill => {
-
-    const top = skill.getBoundingClientRect().top;
-
-    if(top < trigger){
-      skill.classList.add("show");
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", mostrarSkills);

@@ -67,16 +67,39 @@ body {
   color: var(--primary-dark);
 }
 
-/* HERO */
 .hero {
+  position: relative;
   background: var(--bg-main);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   padding: 20px 32px 60px;
   align-items: end;
+  overflow: hidden;
 }
 
+/* 🔥 FONDO SOLO PRIMERA COLUMNA (hasta donde llega la imagen/texto izquierdo) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: calc(45% - 85px);
+
+  bottom: 60px; /* 👈 esto lo “levanta” desde abajo */
+
+  background: #2f5e66;
+  z-index: 0;
+}
+
+/* contenido encima */
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* HERO IMAGE */
 .hero-image {
   display: flex;
   justify-content: center;
@@ -85,7 +108,7 @@ body {
 
 .image-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 600px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -94,10 +117,12 @@ body {
 
 .image-card img {
   width: 100%;
-  max-width: 440px;
+ 
+ max-width: 600px;
   height: auto;
   display: block;
 }
+/* TEXTO */
 .hero-content h1 {
   font-size: 3.6rem;
   color: var(--text-dark);
@@ -479,6 +504,7 @@ body {
   font-weight: 800;
 }
 
+/* animacion de descripcion backend jr y las demas */
 
 .typing::after{
   content: "|";
@@ -486,27 +512,291 @@ body {
   animation: cursor 1s infinite;
 }
 
-@keyframes cursor{
-  0%{opacity:1;}
-  50%{opacity:0;}
-  100%{opacity:1;}
+@keyframes cursor {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+/* botones de ingles y español */
+/* CONTENEDOR */
+.lang-switch-pro {
+  width: 140px;
+  cursor: pointer;
 }
 
+/* BASE */
+.switch-track {
+  position: relative;
+  background: #1b1b2b;
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
 
-.skill-tag{
-  background: #b8f2b3;
-  color: #162231;
-  padding: 10px 24px;
-  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.6),
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* LED MEJORADO */
+.led {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: #00ff6a;
+
+  /* BRILLO FUERTE */
+  box-shadow:
+    0 0 6px #00ff6a,
+    0 0 12px #00ff6a,
+    0 0 18px rgba(0, 255, 106, 0.7);
+
+  /* BORDE PARA CONTRASTE */
+  border: 1px solid rgba(255,255,255,0.4);
+
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+/* MODO EN (amarillo más visible) */
+.lang-switch-pro.en .led {
+  left: calc(100% - 22px);
+
+  background: #ffc107;
+
+  box-shadow:
+    0 0 6px #ffc107,
+    0 0 12px #ffc107,
+    0 0 18px rgba(255, 193, 7, 0.7);
+}
+
+@keyframes ledGlow {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.led {
+  animation: ledGlow 1.5s infinite;
+}
+
+/* PALANCA */
+.switch-thumb {
+  position: absolute;
+  width: 55%;
+  height: 75%;
+  background: linear-gradient(145deg, #b6f0b2, #8cd98a);
+  border-radius: 6px;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.35s cubic-bezier(0.68, -0.3, 0.27, 1.3);
+
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.3),
+    0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* MODO EN */
+.lang-switch-pro.en .switch-thumb {
+  left: calc(100% - 55% - 6px);
+  background: linear-gradient(145deg, #ffd36e, #e3a93b);
+}
+
+/* TEXTO */
+.label {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  z-index: 2;
+  font-size: 14px;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+/* ACTIVO */
+.lang-switch-pro:not(.en) .es {
+  color: #1b1b2b;
+}
+
+.lang-switch-pro.en .en {
+  color: #1b1b2b;
+}
+
+/* EFECTO CLICK (cuando presionas) */
+.lang-switch-pro:active .switch-thumb {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* diseño de cuadros de proyecto  */
+
+/* PROYECTOS */
+.projects {
+  background: var(--bg-main); /* mismo fondo que tus secciones */
+  padding: 60px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* TÍTULO */
+.projects h2 {
+  font-size: 2.9rem;
+  margin-bottom: 40px;
+  color: var(--text-dark);
   font-weight: 800;
-  font-size: 1rem;
-
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+  text-align: left;
 }
 
-.skill-tag.show{
-  opacity: 1;
-  transform: translateY(0);
+/* GRID (estable, no se rompe) */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* fijo en desktop */
+  gap: 25px;
+}
+
+/* CARD */
+.project-card {
+  background: var(--card-dark);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(110, 195, 214, 0.25);
+}
+
+/* IMAGEN */
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* TEXTO */
+.project-info {
+  padding: 16px;
+  flex: 1;
+}
+
+.project-info h3 {
+  margin: 0;
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* EFECTO LED (parpadeando 🔥) de la parte de proyectos */
+
+.projects h2 {
+  position: relative;
+  display: inline-block;
+
+  padding: 12px 28px;
+  margin-bottom: 40px;
+
+  background: #04111d;
+  color: var(--accent-light);
+
+  border: 2px solid #8FE18F;
+  border-radius: 10px;
+
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 0 10px rgba(143, 225, 143, 0.4),
+    inset 0 0 8px rgba(143, 225, 143, 0.2);
+}
+
+/* LED IZQUIERDO (parpadeando 🔥) */
+.projects h2::before {
+  content: "";
+  position: absolute;
+  left: 10px; /* ahora dentro */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background: #00ff6a;
+
+  box-shadow:
+    0 0 6px #00ff6a,
+    0 0 12px #00ff6a;
+
+  animation: blinkLED 1.2s infinite;
+}
+
+/* LED DERECHO (estable tipo estado) */
+.projects h2::after {
+  content: "";
+  position: absolute;
+  right: 10px; /* dentro */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background: #e3a93b;
+
+  box-shadow:
+    0 0 6px #e3a93b,
+    0 0 12px #e3a93b;
+}
+
+/* ANIMACIÓN PARPADEO */
+@keyframes blinkLED {
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 6px #00ff6a, 0 0 12px #00ff6a;
+  }
+  50% {
+    opacity: 0.3;
+    box-shadow: 0 0 2px #00ff6a, 0 0 5px #00ff6a;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 6px #00ff6a, 0 0 12px #00ff6a;
+  }
 }

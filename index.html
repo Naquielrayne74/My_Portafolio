@@ -16,42 +16,59 @@
   <header class="header">
     <div class="logo">Logo</div>
 
-    <nav class="navbar">
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+<nav class="navbar">
+  <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+  <a href="#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+
+  <!-- NUEVO -->
+  <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+
+  <a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a>
+  <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+
+  <!-- BOTÓN -->
+  <div class="lang-switch-pro" id="btnIdioma">
+    <div class="switch-track">
+      <div class="led"></div>
+      <div class="switch-thumb"></div>
+      <span class="label es">ES</span>
+      <span class="label en">EN</span>
+    </div>
+  </div>
+</nav>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="hero-image">
       <div class="image-card">
-      <img
-         src="images/manorobotica.png"
-         alt="Brazo robótico"
-         />
+        <img src="images/router.png" alt="router"/>
       </div>
     </div>
 
     <div class="hero-content">
       <h1>Nahun Martínez</h1>
-      <h2>Estudiante de Ingeniería en Sistemas y <span>Redes Informáticas</span></h2>
 
-   <div class="social-links" id="contacto">
-  <a href="https://github.com/Naquielrayne74" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-    <i class="fa-brands fa-github"></i>
-  </a>
+      <h2 
+        data-es="Estudiante de Ingeniería en Sistemas y <span>Redes Informáticas</span>"
+        data-en="Systems Engineering Student and <span>Computer Networks</span>"
+      >
+        Estudiante de Ingeniería en Sistemas y <span>Redes Informáticas</span>
+      </h2>
 
-  <a href="https://www.linkedin.com/in/nahun-martinez-a95b923b5/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin-in"></i>
-  </a>
+      <div class="social-links" id="contacto">
+        <a href="https://github.com/Naquielrayne74" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
 
-  <a href="mailto:nahunmartinez7692@gmail" target="_blank" aria-label="Correo">
-    <i class="fa-solid fa-envelope"></i>
-  </a>
-</div>
+        <a href="https://www.linkedin.com/in/nahun-martinez-a95b923b5/" target="_blank">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a href="mailto:nahunmartinez7692@gmail">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
 
       <div class="line"></div>
 
@@ -60,44 +77,107 @@
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
 
-    <div class="areas-list">
-  <button class="area-btn"><span class="typing" data-text="Jr. Robótica"></span></button>
-  <button class="area-btn"><span class="typing" data-text="Jr. Redes"></span></button>
-  <button class="area-btn"><span class="typing" data-text="Jr. BackEnd"></span></button>
-</div>
+        <div class="areas-list">
+          <button class="area-btn">
+            <span class="typing" data-es="Jr. Robótica" data-en="Jr. Robotics"></span>
+          </button>
+          <button class="area-btn">
+            <span class="typing" data-es="Jr. Redes" data-en="Jr. Networks"></span>
+          </button>
+          <button class="area-btn">
+            <span class="typing" data-es="Jr. BackEnd" data-en="Jr. Backend"></span>
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- SOBRE MI -->
   <section class="about" id="sobre-mi">
     <div class="about-text">
-      <h2>Sobre mí</h2>
+      <h2 data-es="Sobre mí" data-en="About me">Sobre mí</h2>
       <div class="underline"></div>
 
       <h3>Nahun Ezequiel Martínez Argueta</h3>
-      <p>
-        Desarrollador en formación con un enfoque técnico equilibrado entre la
-        lógica de servidor y la gestión de datos. Mi perfil se caracteriza por
-        una mentalidad de resolución de problemas ("troubleshooting") trasladada
-        al código, con especial interés en la eficiencia del sistema y la
-        arquitectura de software.
-      </p>
 
-     <a href="CV/Nahun-Martinez-CV.pdf" class="cv-btn" download>
-  <span class="icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-  Descarga CV
-</a>
+   <p 
+  data-es="Desarrollador en formación con un enfoque técnico equilibrado entre la lógica de servidor y la gestión de datos. Mi perfil se caracteriza por una mentalidad de resolución de problemas (troubleshooting) trasladada al código, con especial interés en la eficiencia del sistema y la arquitectura de software."
+  data-en="Developer in training with a balanced technical approach between server-side logic and data management. My profile is characterized by a problem-solving mindset (troubleshooting) applied to code, with a strong interest in system efficiency and software architecture."
+>
+  Desarrollador en formación con un enfoque técnico equilibrado entre la lógica de servidor y la gestión de datos. Mi perfil se caracteriza por una mentalidad de resolución de problemas (troubleshooting) trasladada al código, con especial interés en la eficiencia del sistema y la arquitectura de software.
+</p>
+
+      <a href="CV/Nahun-Martinez-CV.pdf" class="cv-btn" download>
+        <span class="icon">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </span>
+        <span data-es="Descarga CV" data-en="Download CV">Descarga CV</span>
+      </a>
     </div>
 
-   <div class="about-visual">
-  <div class="shape shape-dark"></div>
-  <div class="shape shape-light"></div>
-  <img src="images/nahun.png" alt="Foto de Nahun" class="about-img">
-</div>
+    <div class="about-visual">
+      <div class="shape shape-dark"></div>
+      <div class="shape shape-light"></div>
+      <img src="images/nahun.png" alt="Foto de Nahun" class="about-img">
+    </div>
   </section>
+
+   <!-- PROYECTOS -->
+<section class="projects" id="proyectos">
+  <h2 data-es="Proyectos" data-en="Projects">Proyectos</h2>
+
+  <div class="projects-container">
+
+    <!-- ConsoleXpress -->
+    <a href="/proyectos/consolexpress/consolexpress.html" class="project-card">
+      <img src="images/consolexpress1.jpeg" alt="ConsoleXpress">
+      <div class="project-info">
+        <h3>ConsoleXpress</h3>
+        <p 
+          data-es="Aplicación de venta de consolas desarrollada con enfoque en backend."
+          data-en="Console sales application focused on backend development."
+        >
+          Aplicación de venta de consolas desarrollada con enfoque en backend.
+        </p>
+      </div>
+    </a>
+
+    <!-- Redes -->
+<a href="/proyectos/redes/redes.html" class="project-card">
+  <img src="images/redes1.png" alt="Redes">
+  <div class="project-info">
+    <h3>Redes</h3>
+    <p 
+      data-es="Proyectos de configuración y simulación de redes en entornos reales."
+      data-en="Network configuration and simulation projects."
+    >
+      Proyectos de configuración y simulación de redes en entornos reales.
+    </p>
+  </div>
+</a>
+
+   <!-- Veganimo -->
+<a href="/proyectos/veganimo/veganimo.html" class="project-card">
+  <img src="images/veganimo1.jpeg" alt="Veganimo">
+  <div class="project-info">
+    <h3>Veganimo</h3>
+    <p 
+      data-es="Aplicación enfocada en nutrición y recetas saludables."
+      data-en="Application focused on nutrition and healthy recipes."
+    >
+      Aplicación enfocada en nutrición y recetas saludables.
+    </p>
+  </div>
+</a>
+
+  </div>
+</section>
 
   <!-- HABILIDADES -->
   <section class="skills" id="habilidades">
-    <h2>Habilidades técnicas</h2>
+    <h2 data-es="Habilidades técnicas" data-en="Technical skills">
+      Habilidades técnicas
+    </h2>
 
     <div class="skills-container">
       <span class="skill-tag">Redes</span>
@@ -108,20 +188,26 @@
     </div>
   </section>
 
+ 
+
   <!-- HABILIDADES BLANDAS -->
-<section class="soft-skills">
-  <h2>Habilidades blandas</h2>
+  <section class="soft-skills">
+    <h2 data-es="Habilidades blandas" data-en="Soft skills">
+      Habilidades blandas
+    </h2>
 
-  <div class="skills-container">
-    <span class="skill-tag">Resolución de problemas</span>
-    <span class="skill-tag">Pensamiento lógico</span>
-    <span class="skill-tag">Trabajo en equipo</span>
-    <span class="skill-tag">Comunicación técnica</span>
-    <span class="skill-tag">Aprendizaje autónomo</span>
-    <span class="skill-tag">Adaptabilidad tecnológica</span>
-  </div>
-</section>
+    <div class="skills-container">
+      <span class="skill-tag" data-es="Resolución de problemas" data-en="Problem solving">Resolución de problemas</span>
+      <span class="skill-tag" data-es="Pensamiento lógico" data-en="Logical thinking">Pensamiento lógico</span>
+      <span class="skill-tag" data-es="Trabajo en equipo" data-en="Teamwork">Trabajo en equipo</span>
+      <span class="skill-tag" data-es="Comunicación técnica" data-en="Technical communication">Comunicación técnica</span>
+      <span class="skill-tag" data-es="Aprendizaje autónomo" data-en="Self-learning">Aprendizaje autónomo</span>
+      <span class="skill-tag" data-es="Adaptabilidad tecnológica" data-en="Tech adaptability">Adaptabilidad tecnológica</span>
+    </div>
+  </section>
 
+  <!-- IMPORTANTE: TU JS -->
+  <script src="idioma.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
