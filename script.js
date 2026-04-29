@@ -48,3 +48,30 @@ elementos.forEach((el, index) => {
 
   setTimeout(loop, index * 1200);
 });
+
+// modal para ver imagen en grande en los proyectos //
+
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const closeModal = document.getElementById("closeModal");
+
+// abrir imagen
+document.querySelectorAll(".section img").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.classList.add("show");
+    modalImg.src = img.src;
+  });
+});
+
+// cerrar con X
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+// cerrar al dar click fuera de la imagen
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+  }
+});
+

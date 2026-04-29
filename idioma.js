@@ -5,6 +5,7 @@ let idioma = localStorage.getItem("idioma") || "es";
 function aplicarIdioma() {
   document.documentElement.lang = idioma;
 
+
   document.querySelectorAll("[data-es]").forEach(el => {
     const texto = el.getAttribute(`data-${idioma}`);
     if (texto) el.innerHTML = texto;
@@ -18,7 +19,9 @@ function aplicarIdioma() {
       btn.classList.remove("en");
     }
   }
+     actualizarCV();
 }
+
 
 /* EJECUTAR SIEMPRE AL CARGAR */
 document.addEventListener("DOMContentLoaded", aplicarIdioma);
@@ -30,4 +33,16 @@ if (btn) {
     localStorage.setItem("idioma", idioma);
     aplicarIdioma();
   });
+}
+
+const cvBtn = document.querySelector('.cv-btn');
+
+function actualizarCV() {
+  if (!cvBtn) return;
+
+  if (idioma === "es") {
+    cvBtn.href = "CV/Nahun-Martinez-CV.pdf";
+  } else {
+    cvBtn.href = "CV/Nahun-Martinez-CV-en.pdf";
+  }
 }
