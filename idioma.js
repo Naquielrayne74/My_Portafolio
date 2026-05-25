@@ -5,8 +5,7 @@ let idioma = localStorage.getItem("idioma") || "es";
 function aplicarIdioma() {
   document.documentElement.lang = idioma;
 
-
-  document.querySelectorAll("[data-es]").forEach(el => {
+  document.querySelectorAll("[data-es]").forEach((el) => {
     const texto = el.getAttribute(`data-${idioma}`);
     if (texto) el.innerHTML = texto;
   });
@@ -19,9 +18,8 @@ function aplicarIdioma() {
       btn.classList.remove("en");
     }
   }
-     actualizarCV();
+  actualizarCV();
 }
-
 
 /* EJECUTAR SIEMPRE AL CARGAR */
 document.addEventListener("DOMContentLoaded", aplicarIdioma);
@@ -35,7 +33,7 @@ if (btn) {
   });
 }
 
-const cvBtn = document.querySelector('.cv-btn');
+const cvBtn = document.querySelector(".cv-btn");
 
 function actualizarCV() {
   if (!cvBtn) return;

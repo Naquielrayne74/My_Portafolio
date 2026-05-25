@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
 
 :root {
   --bg-main: #d9e3e8;
@@ -16,7 +16,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 html {
@@ -117,8 +117,8 @@ body {
 
 .image-card img {
   width: 100%;
- 
- max-width: 600px;
+
+  max-width: 600px;
   height: auto;
   display: block;
 }
@@ -170,9 +170,9 @@ body {
 }
 
 .social-title {
-  font-size: 2rem;        /* más grande */
+  font-size: 2rem; /* más grande */
   font-weight: 900;
-  color: #1E1B25;         /* negro de tu paleta */
+  color: #1e1b25; /* negro de tu paleta */
   margin-bottom: 14px;
   letter-spacing: 1px;
 }
@@ -232,117 +232,410 @@ body {
   transform: translateX(-5px);
 }
 
-/* ABOUT */
+/* --- SECCIÓN ABOUT: layout base (mantiene tu grid existente) --- */
 .about {
   background: var(--bg-main);
-  padding: 40px 32px 70px;
+  padding: 50px 32px 70px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 320px 1fr;
+  gap: 48px;
   align-items: center;
 }
 
-.about-text h2 {
-  font-size: 3.3rem;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-  font-weight: 800;
+/* ============================================================
+   TARJETA ROUTER
+   ============================================================ */
+.router-card-wrap {
+  background: #07101c;
+  border: 1.5px solid #1c3a4a;
+  border-radius: 16px;
+  padding: 14px 14px 18px;
+  position: relative;
+  box-shadow:
+    0 0 0 1px #0a1e2c,
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.underline {
-  width: 110px;
-  height: 7px;
-  background: #8fe18f;
-  margin-bottom: 30px;
+/* Línea decorativa superior (simula chasis metálico) */
+.router-card-wrap::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #1c3a4a, #2a7080, #1c3a4a);
+  border-radius: 2px;
 }
 
-.about-text h3 {
-  color: #365361;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 800;
+/* --- LEDs ---------------------------------------------------- */
+.rc-led-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 4px 12px;
 }
 
-.about-text p {
-  max-width: 600px;
-  color: #111;
-  font-size: 1.6rem;
-  line-height: 1.45;
-  font-weight: 700;
-  margin-bottom: 30px;
+.rc-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.cv-btn {
+.rc-led.green {
+  background: #22c55e;
+  animation: ledBlink 1.4s ease-in-out infinite;
+}
+.rc-led.cyan {
+  background: #06b6d4;
+  animation: ledBlink 1.4s ease-in-out infinite 0.4s;
+}
+.rc-led.amber {
+  background: #f59e0b;
+  animation: ledBlink 2.2s ease-in-out infinite 0.8s;
+}
+.rc-led.off {
+  background: #1c3a4a;
+}
+
+@keyframes ledBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.rc-led-labels {
+  font-size: 9px;
+  color: #2a7080;
+  letter-spacing: 1px;
+  font-family: "Courier New", monospace;
+  margin-left: 4px;
+}
+
+/* --- Marco de foto ------------------------------------------ */
+.rc-photo-frame {
+  background: #040d14;
+  border: 1px solid #1c3a4a;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rc-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Línea de escaneo animada */
+.rc-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(110, 195, 214, 0.45),
+    transparent
+  );
+  animation: scanMove 3.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scanMove {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* --- Parte inferior de la tarjeta --------------------------- */
+.rc-bottom {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botón CV dentro de la tarjeta */
+.rc-cv-btn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 30px 10px 12px;
-  background: var(--btn-dark);
-  color: #b8ffbe;
+  gap: 10px;
+  background: #0a1e2c;
+  border: 1px solid #2a7080;
+  border-radius: 8px;
+  padding: 9px 14px;
+  color: #8fe8b8;
   text-decoration: none;
-  border-radius: 40px;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  transition: 0.3s ease;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    transform 0.2s;
 }
 
-.cv-btn .icon {
-  width: 28px;
-  height: 28px;
-  border: 2px solid #b8ffbe;
+.rc-cv-btn:hover {
+  background: #122535;
+  border-color: #6ec3d6;
+  transform: translateY(-2px);
+}
+
+.rc-cv-icon {
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #8fe8b8;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
 }
 
-.cv-btn:hover {
-  transform: translateY(-3px);
-}
-
-.about-visual {
-  position: relative;
-  height: 340px;
+/* Barra de puertos */
+.rc-port-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 7px;
+  padding: 7px 10px;
+  background: #040d14;
+  border: 1px solid #162c3a;
+  border-radius: 6px;
 }
 
-.shape {
-  position: absolute;
-  border-radius: 26px;
+.rc-port {
+  height: 8px;
+  border-radius: 3px;
+  flex: 1;
 }
 
-.shape-dark {
-  width: 230px;
-  height: 290px;
-  background: #062031;
-  transform: rotate(-14deg);
-  top: 12px;
-  left: 120px;
-  z-index: 1;
+.rc-port.teal {
+  background: #1c6a78;
+}
+.rc-port.cyan-p {
+  background: #1285a0;
+}
+.rc-port.amber-p {
+  flex: 0 0 18px;
+  background: #b57320;
+}
+.rc-port.dark-p {
+  flex: 0 0 16px;
+  background: #0a1e2c;
+  border: 1px solid #1c3a4a;
+  border-radius: 50%;
+}
+.rc-port.orange-p {
+  flex: 0 0 16px;
+  background: #a83c18;
+  border-radius: 50%;
 }
 
-.shape-light {
-  width: 250px;
-  height: 260px;
-  background: #6ec3d6;
-  border-radius: 28px;
-  top: 35px;
-  left: 155px;
-  z-index: 2;
+/* ============================================================
+   TEXTO LADO DERECHO
+   ============================================================ */
+
+/* Tag "about.me" estilo terminal */
+.rc-section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #07101c;
+  border: 1px solid #2a7080;
+  border-radius: 6px;
+  padding: 4px 12px;
+  color: #6ec3d6;
+  font-size: 0.78rem;
+  font-family: "Courier New", monospace;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
 }
 
-.about-img {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 260px;
-  height: auto;
-  display: block;
-  border-radius: 24px;
-  object-fit: cover;
+/* Tarjetas de estadística */
+.rc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 24px 0 18px;
+}
+
+.rc-stat-block {
+  background: rgba(53, 111, 120, 0.08);
+  border: 1px solid rgba(53, 111, 120, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rc-stat-label {
+  font-size: 0.78rem;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.rc-stat-value {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* TEXTO LADO DERECHO — mejoras visuales */
+.about-text h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 6px;
+  line-height: 1.1;
+}
+
+.about-text .underline {
+  width: 52px;
+  height: 4px;
+  background: #22c55e;
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+
+.about-text h3 {
+  font-family: "Courier New", monospace;
+  font-size: 0.88rem;
+  color: #2a7080;
+  letter-spacing: 1px;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-text h3::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: #2a7080;
+  flex-shrink: 0;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #3a4a52;
+  line-height: 1.75;
+  margin: 0 0 28px;
+  border-left: 3px solid #1c3a4a;
+  padding-left: 16px;
+  max-width: 480px;
+}
+
+/* Stat cards — fondo oscuro para contrastar */
+.rc-stat-block {
+  background: #07101c;
+  border: 1px solid #1c3a4a;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.rc-stat-label {
+  font-size: 0.72rem;
+  color: #2a7080;
+  letter-spacing: 1px;
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+}
+
+.rc-stat-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6ec3d6;
+}
+
+/* Tag about.me — pill con LED */
+.rc-section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #07101c;
+  border: 1px solid #2a7080;
+  border-radius: 20px;
+  padding: 6px 16px 6px 10px;
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.rc-section-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: tagLed 1.4s ease-in-out infinite;
+}
+
+@keyframes tagLed {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .router-card-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 30px 20px 50px;
+  }
+
+  .router-card-wrap {
+    max-width: 100%;
+  }
+
+  .rc-stats {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* SKILLS */
@@ -433,13 +726,13 @@ body {
     padding-right: 20px;
   }
 
-.image-card {
-  max-width: 300px;
-}
+  .image-card {
+    max-width: 300px;
+  }
 
-.image-card img {
-  max-width: 300px;
-}
+  .image-card img {
+    max-width: 300px;
+  }
   .hero-content h1 {
     font-size: 2.2rem;
   }
@@ -514,16 +807,22 @@ body {
 
 /* animacion de descripcion backend jr y las demas */
 
-.typing::after{
+.typing::after {
   content: "|";
-  margin-left:4px;
+  margin-left: 4px;
   animation: cursor 1s infinite;
 }
 
 @keyframes cursor {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /* botones de ingles y español */
 /* CONTENEDOR */
@@ -544,8 +843,8 @@ body {
   overflow: hidden;
 
   box-shadow:
-    inset 0 2px 6px rgba(0,0,0,0.6),
-    0 2px 4px rgba(0,0,0,0.3);
+    inset 0 2px 6px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* LED MEJORADO */
@@ -567,7 +866,7 @@ body {
     0 0 18px rgba(0, 255, 106, 0.7);
 
   /* BORDE PARA CONTRASTE */
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 
   z-index: 4;
   transition: all 0.3s ease;
@@ -586,9 +885,15 @@ body {
 }
 
 @keyframes ledGlow {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .led {
@@ -608,8 +913,8 @@ body {
   transition: all 0.35s cubic-bezier(0.68, -0.3, 0.27, 1.3);
 
   box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.3),
-    0 4px 8px rgba(0,0,0,0.4);
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* MODO EN */
@@ -680,7 +985,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   transition: 0.3s ease;
 }
 
@@ -742,7 +1047,7 @@ body {
   background: #04111d;
   color: var(--accent-light);
 
-  border: 2px solid #8FE18F;
+  border: 2px solid #8fe18f;
   border-radius: 10px;
 
   font-weight: 800;
@@ -797,15 +1102,21 @@ body {
 @keyframes blinkLED {
   0% {
     opacity: 1;
-    box-shadow: 0 0 6px #00ff6a, 0 0 12px #00ff6a;
+    box-shadow:
+      0 0 6px #00ff6a,
+      0 0 12px #00ff6a;
   }
   50% {
     opacity: 0.3;
-    box-shadow: 0 0 2px #00ff6a, 0 0 5px #00ff6a;
+    box-shadow:
+      0 0 2px #00ff6a,
+      0 0 5px #00ff6a;
   }
   100% {
     opacity: 1;
-    box-shadow: 0 0 6px #00ff6a, 0 0 12px #00ff6a;
+    box-shadow:
+      0 0 6px #00ff6a,
+      0 0 12px #00ff6a;
   }
 }
 
@@ -817,7 +1128,7 @@ body {
 }
 
 .logo img {
-  height: 42px;          /* tamaño del logo */
+  height: 42px; /* tamaño del logo */
   width: auto;
   object-fit: contain;
   transition: 0.3s ease;
@@ -828,7 +1139,6 @@ body {
   transform: scale(1.05);
   filter: drop-shadow(0 0 6px rgba(112, 199, 218, 0.6));
 }
-
 
 /* footer de pagina principal */
 .footer {
@@ -872,7 +1182,6 @@ body {
 .footer-logo img:hover {
   transform: scale(1.1); /* se agranda */
   filter: drop-shadow(0 0 15px #b7f0b6); /* brillo */
-  
 }
 
 .footer-logo img:hover {
@@ -891,9 +1200,9 @@ body {
 /* REDES SOBRE LA LÍNEA */
 .footer-social {
   position: absolute;
-  right: 120px;   /* ajustá según tu diseño */
-  top: 95px;      /* 🔥 este es el que mueve arriba/abajo */
-  
+  right: 120px; /* ajustá según tu diseño */
+  top: 95px; /* 🔥 este es el que mueve arriba/abajo */
+
   display: flex;
   gap: 20px;
 }
@@ -901,7 +1210,7 @@ body {
 /* ÍCONOS MÁS GRANDES */
 .footer-social a {
   color: white;
-  font-size: 22px;   /* más grandes */
+  font-size: 22px; /* más grandes */
   transition: 0.3s ease;
 }
 
@@ -915,6 +1224,6 @@ body {
 
 .footer-copy {
   font-size: 14px;
-  width: 70%;          /* mismo ancho que la línea */
-  text-align: right;   /* lo manda a la derecha */
+  width: 70%; /* mismo ancho que la línea */
+  text-align: right; /* lo manda a la derecha */
 }
