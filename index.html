@@ -12,7 +12,9 @@
     />
   </head>
   <body>
-    <!-- HEADER -->
+    <!-- ============================================================
+         1. HEADER
+         ============================================================ -->
     <header class="header">
       <div class="logo">
         <img src="images/nahun-logo.svg" alt="Nahun Martínez Logo" />
@@ -21,18 +23,15 @@
       <nav class="navbar">
         <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
         <a href="#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
-
-        <!-- NUEVO -->
         <a href="#proyectos" data-es="Proyectos" data-en="Projects"
           >Proyectos</a
         >
-
         <a href="#habilidades" data-es="Habilidades" data-en="Skills"
           >Habilidades</a
         >
         <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
 
-        <!-- BOTÓN -->
+        <!-- Switch de idioma -->
         <div class="lang-switch-pro" id="btnIdioma">
           <div class="switch-track">
             <div class="led"></div>
@@ -44,7 +43,9 @@
       </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- ============================================================
+         2. HERO
+         ============================================================ -->
     <section class="hero" id="inicio">
       <div class="hero-image">
         <div class="image-card">
@@ -62,13 +63,9 @@
           Estudiante de Ingeniería en Sistemas y <span>Redes Informáticas</span>
         </h2>
 
+        <!-- Contactos (solo los íconos sociales, el id="contacto" va en el footer) -->
         <div class="social-section">
-          <h3
-            class="social-title"
-            data-es="Contactos"
-            data-en="Contact"
-            id="contacto"
-          >
+          <h3 class="social-title" data-es="Contactos" data-en="Contact">
             Contactos
           </h3>
 
@@ -76,19 +73,15 @@
             <a href="https://github.com/Naquielrayne74" target="_blank">
               <i class="fa-brands fa-github"></i>
             </a>
-
             <a
               href="https://www.linkedin.com/in/nahun-martinez-a95b923b5/"
               target="_blank"
             >
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-
-            <a href="mailto:nahunmartinez7692@gmail">
+            <a href="mailto:nahunmartinez7692@gmail.com">
               <i class="fa-solid fa-envelope"></i>
             </a>
-
-            <!-- 🔥 NUEVO FACEBOOK -->
             <a
               href="https://www.facebook.com/share/1B7gFWPcFo/"
               target="_blank"
@@ -97,8 +90,10 @@
             </a>
           </div>
         </div>
+
         <div class="line"></div>
 
+        <!-- Tarjeta de áreas -->
         <div class="areas-card">
           <div class="arrow-circle">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -131,11 +126,12 @@
       </div>
     </section>
 
-    <!-- SOBRE MI -->
+    <!-- ============================================================
+         3. SOBRE MÍ
+         ============================================================ -->
     <section class="about" id="sobre-mi">
-      <!-- COLUMNA IZQUIERDA: Tarjeta router -->
+      <!-- Columna izquierda: tarjeta router -->
       <div class="router-card-wrap">
-        <!-- Fila LEDs superior -->
         <div class="rc-led-row">
           <div class="rc-led green"></div>
           <div class="rc-led cyan"></div>
@@ -146,13 +142,11 @@
           >
         </div>
 
-        <!-- Marco foto -->
         <div class="rc-photo-frame">
           <div class="rc-scan-line"></div>
           <img src="images/Nahun.png" alt="Foto de Nahun" class="rc-photo" />
         </div>
 
-        <!-- Parte inferior: botón CV + barra de puertos -->
         <div class="rc-bottom">
           <a href="CV/Nahun-Martinez-CV.pdf" class="rc-cv-btn" download>
             <span class="rc-cv-icon">
@@ -171,10 +165,9 @@
         </div>
       </div>
 
-      <!-- COLUMNA DERECHA: Texto -->
+      <!-- Columna derecha: texto -->
       <div class="about-text">
         <div class="rc-section-tag">
-          <i class="fa-solid fa-network-wired"></i>
           <span>about.me</span>
         </div>
 
@@ -194,7 +187,6 @@
           arquitectura de software.
         </p>
 
-        <!-- Tarjetas de estadística -->
         <div class="rc-stats">
           <div class="rc-stat-block">
             <span class="rc-stat-label" data-es="Enfoque" data-en="Focus"
@@ -218,12 +210,14 @@
         </div>
       </div>
     </section>
-    <!-- PROYECTOS -->
+
+    <!-- ============================================================
+         4. PROYECTOS
+         ============================================================ -->
     <section class="projects" id="proyectos">
       <h2 data-es="Proyectos" data-en="Projects">Proyectos</h2>
 
       <div class="projects-container">
-        <!-- ConsoleXpress -->
         <a
           href="proyectos/consolexpress/consolexpress.html"
           class="project-card"
@@ -241,7 +235,6 @@
           </div>
         </a>
 
-        <!-- Redes -->
         <a href="proyectos/redes/redes.html" class="project-card">
           <img src="images/redes1.png" alt="Redes" />
           <div class="project-info">
@@ -256,7 +249,6 @@
           </div>
         </a>
 
-        <!-- Veganimo -->
         <a href="proyectos/veganimo/veganimo.html" class="project-card">
           <img src="images/veganimo1.jpeg" alt="Veganimo" />
           <div class="project-info">
@@ -271,6 +263,10 @@
         </a>
       </div>
     </section>
+
+    <!-- ============================================================
+         5. HABILIDADES TÉCNICAS
+         ============================================================ -->
     <div class="skills-wrapper">
       <!-- HABILIDADES -->
       <section class="skills" id="habilidades">
@@ -286,7 +282,9 @@
           <span class="skill-tag">Python</span>
         </div>
       </section>
-
+      <!-- ============================================================
+         6. HABILIDADES BLANDAS
+         ============================================================ -->
       <!-- HABILIDADES BLANDAS -->
       <section class="soft-skills">
         <h2 data-es="Habilidades blandas" data-en="Soft skills">
@@ -331,17 +329,17 @@
       </section>
     </div>
 
-    <footer class="footer">
-      <!-- Imagen de fondo del footer -->
+    <!-- ============================================================
+         7. FOOTER  ← id="contacto" movido aquí ✅
+         ============================================================ -->
+    <footer class="footer" id="contacto">
       <div class="footer-bg"></div>
 
       <div class="footer-content">
-        <!-- Logo -->
         <div class="footer-logo">
           <img src="images/nahun-logo.svg" alt="Logo" />
         </div>
 
-        <!-- Línea + redes -->
         <div class="footer-line-container">
           <div class="footer-line"></div>
 
@@ -349,18 +347,15 @@
             <a href="https://github.com/Naquielrayne74" target="_blank">
               <i class="fa-brands fa-github"></i>
             </a>
-
             <a
               href="https://www.linkedin.com/in/nahun-martinez-a95b923b5/"
               target="_blank"
             >
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-
             <a href="mailto:nahunmartinez7692@gmail.com">
               <i class="fa-solid fa-envelope"></i>
             </a>
-
             <a
               href="https://www.facebook.com/share/1B7gFWPcFo/"
               target="_blank"
@@ -370,7 +365,6 @@
           </div>
         </div>
 
-        <!-- Derechos -->
         <p
           class="footer-copy"
           data-es="© 2026 Nahun Martinez - Todos los derechos reservados"
@@ -381,7 +375,22 @@
       </div>
     </footer>
 
-    <!-- IMPORTANTE: TU JS -->
+    <!-- ============================================================
+         BOTÓN VOLVER ARRIBA
+         ============================================================ -->
+    <a
+      href="#inicio"
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Volver al inicio"
+    >
+      <div class="btt-led"></div>
+      <div class="btt-arrow"></div>
+    </a>
+
+    <!-- ============================================================
+         SCRIPTS (siempre al final del body)
+         ============================================================ -->
     <script src="idioma.js"></script>
     <script src="script.js"></script>
   </body>
