@@ -109,3 +109,48 @@ if (navToast && navLinks.length) {
     }
   });
 }
+
+// ============================================================
+// MODAL CERTIFICADOS — agrega esto en tu script.js
+// ============================================================
+const certDevices = document.querySelectorAll(".cert-device");
+const certModal = document.getElementById("certModal");
+const certModalImg = document.getElementById("certModalImg");
+const certModalLbl = document.getElementById("certModalLabel");
+const certModalClose = document.getElementById("certModalClose");
+
+if (certModal && certDevices.length) {
+  // Abrir modal al hacer clic en una tarjeta
+  certDevices.forEach((device) => {
+    device.addEventListener("click", () => {
+      const src = device.getAttribute("data-cert-src");
+      const label = device.getAttribute("data-cert-label");
+      certModalImg.src = src;
+      certModalLbl.textContent = label;
+      certModal.classList.add("open");
+      document.body.style.overflow = "hidden"; // evita scroll de fondo
+    });
+  });
+
+  // Cerrar con botón X
+  certModalClose.addEventListener("click", () => {
+    certModal.classList.remove("open");
+    document.body.style.overflow = "";
+  });
+
+  // Cerrar al hacer clic fuera de la imagen
+  certModal.addEventListener("click", (e) => {
+    if (e.target === certModal) {
+      certModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Cerrar con tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && certModal.classList.contains("open")) {
+      certModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  });
+}
