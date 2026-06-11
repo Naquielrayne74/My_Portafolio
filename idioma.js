@@ -9,6 +9,11 @@ function aplicarIdioma() {
     if (texto) el.innerHTML = texto;
   });
 
+  document.querySelectorAll("[data-placeholder-es]").forEach((el) => {
+    const ph = el.getAttribute(`data-placeholder-${idioma}`);
+    if (ph) el.placeholder = ph;
+  });
+
   if (btn) {
     if (idioma === "en") {
       btn.classList.add("en");
@@ -20,7 +25,7 @@ function aplicarIdioma() {
 }
 
 function actualizarCV() {
-  const cvBtn = document.querySelector(".rc-cv-btn"); // ← movido aquí adentro
+  const cvBtn = document.querySelector(".rc-cv-btn");
   if (!cvBtn) return;
 
   cvBtn.href =

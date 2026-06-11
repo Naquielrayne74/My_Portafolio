@@ -1917,3 +1917,325 @@ body {
     font-size: 0.72rem;
   }
 }
+
+/* ============================================================
+   MODAL CONTACTO — contact-modal.css
+   Compatible 100% con el HTML y JS existentes
+   ============================================================ */
+
+/* ── Overlay ─────────────────────────────────────────────── */
+.contact-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+.contact-modal.visible {
+  display: flex;
+}
+
+/* ── Contenedor ──────────────────────────────────────────── */
+.contact-modal-inner {
+  background: #0d1b2a;
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 92vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 188, 212, 0.3) transparent;
+}
+.contact-modal-inner::-webkit-scrollbar {
+  width: 4px;
+}
+.contact-modal-inner::-webkit-scrollbar-thumb {
+  background: rgba(0, 188, 212, 0.3);
+  border-radius: 4px;
+}
+
+/* ── Header (contact-modal-top) ──────────────────────────── */
+.contact-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 188, 212, 0.15);
+}
+.contact-modal-top span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #00bcd4;
+}
+.contact-modal-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  flex-shrink: 0;
+}
+.contact-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ── Formulario ──────────────────────────────────────────── */
+#contactoForm {
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Trampa anti-spam — oculto */
+.campo-trampa {
+  display: none !important;
+}
+
+/* Filas de dos columnas */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Grupo de campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Labels */
+.form-group label,
+.check-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(0, 188, 212, 0.8);
+}
+.req {
+  color: #e24b4a;
+  margin-left: 2px;
+}
+
+/* Inputs, textarea, select */
+#contactoForm input[type="text"],
+#contactoForm input[type="email"],
+#contactoForm select,
+#contactoForm textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  border-radius: 8px;
+  color: #e8f4f8;
+  font-size: 13px;
+  padding: 9px 12px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+#contactoForm input[type="text"]:focus,
+#contactoForm input[type="email"]:focus,
+#contactoForm select:focus,
+#contactoForm textarea:focus {
+  border-color: rgba(0, 188, 212, 0.6);
+  background: rgba(0, 188, 212, 0.05);
+}
+#contactoForm input::placeholder,
+#contactoForm textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estado de error */
+#contactoForm input.error,
+#contactoForm select.error,
+#contactoForm textarea.error {
+  border-color: rgba(226, 75, 74, 0.6) !important;
+  background: rgba(226, 75, 74, 0.04) !important;
+}
+
+/* Estado OK */
+#contactoForm input.ok,
+#contactoForm select.ok,
+#contactoForm textarea.ok {
+  border-color: rgba(0, 188, 212, 0.5);
+}
+
+/* Select — flecha personalizada */
+#contactoForm select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300bcd4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+#contactoForm select option {
+  background: #0d1b2a;
+  color: #e8f4f8;
+}
+
+/* Textarea */
+#contactoForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Contador de caracteres */
+.char-count {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: right;
+  margin-top: 3px;
+}
+
+/* Mensajes de error inline */
+.campo-error {
+  display: none;
+  font-size: 11px;
+  color: #e24b4a;
+  margin-top: 2px;
+}
+.campo-error.visible {
+  display: block;
+}
+
+/* Checkbox de política */
+.check-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 2px;
+}
+.check-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 1px solid rgba(0, 188, 212, 0.35);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-top: 1px;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+  position: relative;
+}
+.check-group input[type="checkbox"]:checked {
+  background: #00bcd4;
+  border-color: #00bcd4;
+}
+.check-group input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #001c24;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+.check-group label {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Botón enviar */
+#btnEnviar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #00bcd4;
+  border: none;
+  border-radius: 10px;
+  color: #001c24;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+  transition:
+    background 0.15s,
+    transform 0.1s;
+  font-family: inherit;
+}
+#btnEnviar:hover:not(:disabled) {
+  background: #00d4ee;
+}
+#btnEnviar:active:not(:disabled) {
+  transform: scale(0.98);
+}
+#btnEnviar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Error global del formulario */
+#formErrorMsg {
+  text-align: center;
+}
+
+/* ── Pantalla de éxito ───────────────────────────────────── */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.form-success.visible {
+  display: flex;
+}
+.form-success .fa-circle-check {
+  font-size: 3rem;
+  color: #00bcd4;
+}
+.form-success h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e8f4f8;
+  margin: 0;
+}
+.form-success p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.6;
+}
