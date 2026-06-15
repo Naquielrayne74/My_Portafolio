@@ -111,7 +111,7 @@ if (navToast && navLinks.length) {
 }
 
 // ============================================================
-// MODAL CERTIFICADOS — agrega esto en tu script.js
+// MODAL CERTIFICADOS
 // ============================================================
 const certDevices = document.querySelectorAll(".cert-device");
 const certModal = document.getElementById("certModal");
@@ -120,38 +120,42 @@ const certModalLbl = document.getElementById("certModalLabel");
 const certModalClose = document.getElementById("certModalClose");
 
 if (certModal && certDevices.length) {
-  // Abrir modal al hacer clic en una tarjeta
+
+  function openModal(src, label) {
+    certModalImg.onerror = null; // ← evita loops infinitos de 404
+    certModalImg.src = "";       // resetea antes de cargar
+    certModalLbl.textContent = label;
+
+    certModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+      certModalImg.src = src;    // asigna src después de que el modal es visible
+    });
+  }
+
+  function closeModal() {
+    certModal.classList.remove("open");
+    document.body.style.overflow = "";
+    setTimeout(() => { certModalImg.src = ""; }, 300); // espera la transición CSS
+  }
+
   certDevices.forEach((device) => {
     device.addEventListener("click", () => {
       const src = device.getAttribute("data-cert-src");
       const label = device.getAttribute("data-cert-label");
-      certModalImg.src = src;
-      certModalLbl.textContent = label;
-      certModal.classList.add("open");
-      document.body.style.overflow = "hidden"; // evita scroll de fondo
+      openModal(src, label);
     });
   });
 
-  // Cerrar con botón X
-  certModalClose.addEventListener("click", () => {
-    certModal.classList.remove("open");
-    document.body.style.overflow = "";
-  });
+  certModalClose.addEventListener("click", closeModal);
 
-  // Cerrar al hacer clic fuera de la imagen
   certModal.addEventListener("click", (e) => {
-    if (e.target === certModal) {
-      certModal.classList.remove("open");
-      document.body.style.overflow = "";
-    }
+    if (e.target === certModal) closeModal();
   });
 
-  // Cerrar con tecla Escape
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && certModal.classList.contains("open")) {
-      certModal.classList.remove("open");
-      document.body.style.overflow = "";
-    }
+    if (e.key === "Escape" && certModal.classList.contains("open")) closeModal();
   });
 }
 
